@@ -33,4 +33,14 @@ public class Equipo {
     public int getHorasTrabajadas() {
         return horasTrabajadas;
     }
+
+    @Override
+    public String toString() {
+        return "Equipo{" +
+                "nombre='" + nombre + '\'' +
+                ", miembros=" + miembros +
+                ", responsabilidades=" + responsabilidades +
+                ", horasTrabajadas=" + horasTrabajadas +
+                '}';
+    }
 }
