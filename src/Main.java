@@ -8,8 +8,51 @@ public class Main {
         Scanner reader = new Scanner(System.in);
         GestionProyectos gestion = new GestionProyectos();
 
-        gestion.crearProyecto(reader);
+        int opt = 0;
 
-        System.out.println(gestion.toString());
+        do {
+            mostrarMenu();
+            opt = reader.nextInt();
+            reader.nextLine(); // Clear buffer;
+            opcionMgr(opt, gestion, reader);
+        } while (opt != 4);
+
     }
+
+    public static void opcionMgr(int opt, GestionProyectos gestion, Scanner reader) {
+        switch (opt) {
+            case 1:
+                gestion.crearProyecto(reader);
+                break;
+            case 2:
+                gestion.eliminarProyecto(reader);
+                break;
+            case 3:
+                gestion.cambiarEstado(reader);
+                break;
+            case 4:
+                gestion.agregarMiembro(reader);
+                break;
+            case 5:
+                gestion.generarInforme(reader);
+                break;
+            case 6:
+                System.out.println("Saliendo...");
+                break;
+            default:
+                System.err.println("OPCION NO RECONOCIDA");
+                break;
+        }
+    }
+
+    public static void mostrarMenu() {
+        System.out.println("1. Crear Proyecto");
+        System.out.println("2. Eliminar Proyecto");
+        System.out.println("3. Cambiar estado del proyecto");
+        System.out.println("4. Agregar miembro al proyecto");
+        System.out.println("5. Generar informe");
+        System.out.println("6. Salir");
+        System.out.print("Opcion -> ");
+    }
+
 }

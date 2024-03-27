@@ -41,6 +41,19 @@ public class GestionProyectos {
 
     }
 
+    public void eliminarProyecto(Scanner reader) {
+
+    }
+    public void cambiarEstado(Scanner reader) {
+
+    }
+    public void agregarMiembro(Scanner reader) {
+
+    }
+    public void generarInforme(Scanner reader) {
+
+    }
+
     // UTILS
     // Solo para la clase propia
     private Equipo crearEquipo(Scanner reader) {
