@@ -36,11 +36,11 @@ public class Proyecto {
         return equipo;
     }
 
-    public void setFechaFin(LocalDate fechaFin) {
+    protected void setFechaFin(LocalDate fechaFin) {
         this.fechaFin = fechaFin;
     }
 
-    public void setEstado(String estado) {
+    protected void setEstado(String estado) {
         this.estado = estado;
     }
 

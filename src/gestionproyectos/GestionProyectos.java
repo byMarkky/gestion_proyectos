@@ -1,5 +1,6 @@
 package gestionproyectos;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class GestionProyectos {
 
-    private ArrayList<Proyecto> proyectos;
+    private final ArrayList<Proyecto> proyectos;
 
     public GestionProyectos() {
         this.proyectos = new ArrayList<>();
@@ -40,24 +41,80 @@ public class GestionProyectos {
         this.proyectos.add(proyecto);
 
     }
-
     public void eliminarProyecto(Scanner reader) {
+        int index = getIndiceProyecto(reader);
 
+        this.proyectos.remove(index);
+        System.out.println("Proyecto eliminado correctamente");
     }
     public void cambiarEstado(Scanner reader) {
+        int index = getIndiceProyecto(reader);
+
+        System.out.print("Estado del proyecto: ");
+        String estado = reader.nextLine();
+
+        this.proyectos.get(index).setEstado(estado);
+        System.out.println("Estado actualizado correctamente");
 
     }
     public void agregarMiembro(Scanner reader) {
+        int index = getIndiceProyecto(reader);
 
+        System.out.print("Nombre/Codigo del miembro: ");
+        String miembro = reader.nextLine();
+        System.out.print("Responsabilidad del miembro: ");
+        String respons = reader.nextLine();
+
+        this.proyectos.get(index).getEquipo().addMiembro(miembro, respons);
     }
     public void generarInforme(Scanner reader) {
+
+        int index = getIndiceProyecto(reader);
+
+        Proyecto proyecto = this.proyectos.get(index);
+        System.out.println("###############" + "\n#   INFORME   #" + "\n###############");
+        System.out.println("Proyecto: " + proyecto.getNombre() +
+                "\n" + proyecto.getFechaInicio().toString() +
+                " - " + proyecto.getFechaFin().toString() +
+                "\nEstado: " + proyecto.getEstado() +
+                "\nMiembros y responsabilidades: ");
+
+        for (int i = 0; i < proyecto.getEquipo().getMiembros().size(); i++) {
+            System.out.println(proyecto.getEquipo().getMiembros().get(i) +
+                    "\t" + proyecto.getEquipo().getResponsabilidades().get(i));
+        }
 
     }
 
     // UTILS
     // Solo para la clase propia
-    private Equipo crearEquipo(Scanner reader) {
+    private int getIndiceProyecto(Scanner reader) {
 
+        // Si no hay proyectos abortamos el metodo
+        if (this.proyectos.isEmpty()) {
+            System.out.println("NO HAY PROYECTOS");
+            System.out.println("Creando uno...");
+            this.crearProyecto(reader);
+            return 0;
+        }
+
+        for (int i = 0; i < this.proyectos.size(); i++) {
+            System.out.println((i+1) + ". " + this.proyectos.get(i).getNombre());
+        }
+        System.out.print("Indice del proyecto: ");
+        int index = reader.nextInt();
+        reader.nextLine();  // Clear buffer
+
+        if (!checkIndiceProyecto(index)) {
+            System.err.println("INDICE INVALIDO");
+        }
+
+        return index - 1;
+    }
+    private boolean checkIndiceProyecto(int index) {
+        return index >= 0 && index <= this.proyectos.size();
+    }
+    private Equipo crearEquipo(Scanner reader) {
         System.out.print("Nombre del equipo: ");
         String nombre = reader.nextLine();
 

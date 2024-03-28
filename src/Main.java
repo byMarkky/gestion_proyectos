@@ -15,7 +15,7 @@ public class Main {
             opt = reader.nextInt();
             reader.nextLine(); // Clear buffer;
             opcionMgr(opt, gestion, reader);
-        } while (opt != 4);
+        } while (opt != 6);
 
     }
 
@@ -46,6 +46,9 @@ public class Main {
     }
 
     public static void mostrarMenu() {
+        System.out.println("############################");
+        System.out.println("#   GESTION DE PROYECTOS   #");
+        System.out.println("############################");
         System.out.println("1. Crear Proyecto");
         System.out.println("2. Eliminar Proyecto");
         System.out.println("3. Cambiar estado del proyecto");

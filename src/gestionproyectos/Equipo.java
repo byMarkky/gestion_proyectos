@@ -17,6 +17,11 @@ public class Equipo {
         this.horasTrabajadas = horasTrabajadas;
     }
 
+    protected void addMiembro(String miembro, String responsabilidad) {
+        this.miembros.add(miembro);
+        this.responsabilidades.add(responsabilidad);
+    }
+
     // GETTERS & SETTERS
     public String getNombre() {
         return nombre;
