@@ -1,11 +1,16 @@
 package gestionproyectos;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Clase principal de gestion de proyectos y equipos
+ * @author Marco
+ * @version 2.0
+ * @since 2.5
+ */
 public class GestionProyectos {
 
     private final ArrayList<Proyecto> proyectos;
@@ -14,6 +19,10 @@ public class GestionProyectos {
         this.proyectos = new ArrayList<>();
     }
 
+    /**
+     * Metodo para crear un proyecto pidiendo datos al usuario
+     * @param reader Scanner para leer los datos del usuario
+     */
     public void crearProyecto(Scanner reader) {
 
 
@@ -41,12 +50,22 @@ public class GestionProyectos {
         this.proyectos.add(proyecto);
 
     }
+
+    /**
+     * Metodo para eliminar proyecto por el usuario
+     * @param reader Scanner del usuario
+     */
     public void eliminarProyecto(Scanner reader) {
         int index = getIndiceProyecto(reader);
 
         this.proyectos.remove(index);
         System.out.println("Proyecto eliminado correctamente");
     }
+
+    /**
+     * Metodo para cambiar el estado de un proyecto
+     * @param reader Scanner del usuario
+     */
     public void cambiarEstado(Scanner reader) {
         int index = getIndiceProyecto(reader);
 
@@ -57,6 +76,11 @@ public class GestionProyectos {
         System.out.println("Estado actualizado correctamente");
 
     }
+
+    /**
+     * Metodo para agregar un nuevo miembro al proyecto
+     * @param reader Scanner del usuario
+     */
     public void agregarMiembro(Scanner reader) {
         int index = getIndiceProyecto(reader);
 
@@ -67,6 +91,11 @@ public class GestionProyectos {
 
         this.proyectos.get(index).getEquipo().addMiembro(miembro, respons);
     }
+
+    /**
+     * Metodo para generar un informe de un proyecto
+     * @param reader Scanner del usuario
+     */
     public void generarInforme(Scanner reader) {
 
         int index = getIndiceProyecto(reader);
@@ -88,6 +117,12 @@ public class GestionProyectos {
 
     // UTILS
     // Solo para la clase propia
+
+    /**
+     * Metodo que muestra los proyectos y permite al usuario seleccionar uno
+     * @param reader Scanner del usuario
+     * @return int Indice del proyecto seleccionado por el usuario
+     */
     private int getIndiceProyecto(Scanner reader) {
 
         // Si no hay proyectos abortamos el metodo
@@ -111,9 +146,21 @@ public class GestionProyectos {
 
         return index - 1;
     }
+
+    /**
+     * Metodo para comprobar si existe proyecto en un indice
+     * @param index Indice a comprobar
+     * @return true : si existe proyecot en el indice | false : si no existe proyecto
+     */
     private boolean checkIndiceProyecto(int index) {
         return index >= 0 && index <= this.proyectos.size();
     }
+
+    /**
+     * Metodo para crear un equipo
+     * @param reader Scanner del usuario
+     * @return Equipo retorna el equipo creado
+     */
     private Equipo crearEquipo(Scanner reader) {
         System.out.print("Nombre del equipo: ");
         String nombre = reader.nextLine();
@@ -139,6 +186,11 @@ public class GestionProyectos {
         return new Equipo(nombre, miembros, respons, horas);
     }
 
+    /**
+     * Metodo para convertir un String en una objeto LocalDate
+     * @param f String de la fecha
+     * @return LocalDate fecha parseada
+     */
     private LocalDate parseDate(String f) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return LocalDate.parse(f, formatter);

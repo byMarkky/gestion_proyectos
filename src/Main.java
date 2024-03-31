@@ -2,6 +2,14 @@ import gestionproyectos.GestionProyectos;
 
 import java.util.Scanner;
 
+/**
+ * Clase principal que sirve de punto de entrada del programa
+ * @see GestionProyectos
+ * @see gestionproyectos.Equipo
+ * @see gestionproyectos.Proyecto
+ * @author Marco
+ * @version 3.0
+ */
 public class Main {
     public static void main(String[] args) {
 
@@ -17,8 +25,15 @@ public class Main {
             opcionMgr(opt, gestion, reader);
         } while (opt != 6);
 
+        reader.close();
     }
 
+    /**
+     * Metodo para manejar las opciones del menú
+     * @param opt int Opcion que ha seleccionado el usuario
+     * @param gestion GestionProyectos Objeto de gestion de proyectos
+     * @param reader Scanner del usuario
+     */
     public static void opcionMgr(int opt, GestionProyectos gestion, Scanner reader) {
         switch (opt) {
             case 1:
@@ -45,6 +60,9 @@ public class Main {
         }
     }
 
+    /**
+     * Metodo basico para mostrar el menú
+     */
     public static void mostrarMenu() {
         System.out.println("############################");
         System.out.println("#   GESTION DE PROYECTOS   #");

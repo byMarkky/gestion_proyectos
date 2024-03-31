@@ -2,6 +2,12 @@ package gestionproyectos;
 
 import java.util.ArrayList;
 
+/**
+ * Clase para encapsular los datos de equipo
+ * @version 1.0
+ * @since 1.0
+ * @author Marco
+ */
 public class Equipo {
     private String nombre;
     private ArrayList<String> miembros;
@@ -17,6 +23,11 @@ public class Equipo {
         this.horasTrabajadas = horasTrabajadas;
     }
 
+    /**
+     * Metodo para agregar un miembro nuevo al equipo ademas de su responsabilidad
+     * @param miembro Nombre/Codigo del nuevo miembro
+     * @param responsabilidad Responsabilidad del nuevo miembro
+     */
     protected void addMiembro(String miembro, String responsabilidad) {
         this.miembros.add(miembro);
         this.responsabilidades.add(responsabilidad);

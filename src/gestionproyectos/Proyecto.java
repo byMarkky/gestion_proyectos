@@ -2,6 +2,12 @@ package gestionproyectos;
 
 import java.time.LocalDate;
 
+/**
+ * Clase principal para la encapsulación de los datos de proyectos
+ * @version 1.5
+ * @since 1.0
+ * @author Marco
+ */
 public class Proyecto {
     private String nombre;
     private LocalDate fechaInicio;
@@ -9,7 +15,6 @@ public class Proyecto {
     private String estado;
 
     // private ArrayList<Tarea> listaTareas;
-
 
     public Proyecto(String nombre, LocalDate fechaInicio,
                     LocalDate fechaFin, String estado,
