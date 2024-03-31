@@ -13,7 +13,6 @@ public class Proyecto {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private String estado;
-    private Equipo equipo;
 
     // private ArrayList<Tarea> listaTareas;
 
