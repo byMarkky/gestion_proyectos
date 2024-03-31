@@ -9,10 +9,10 @@ import java.util.ArrayList;
  * @author Marco
  */
 public class Equipo {
-    private String nombre;
+    private final String nombre;
     private ArrayList<String> miembros;
     private ArrayList<String> responsabilidades;
-    private int horasTrabajadas;
+    private final int horasTrabajadas;
 
     public Equipo(String nombre, ArrayList<String> miembros,
                   ArrayList<String> responsabilidades,

@@ -101,7 +101,10 @@ public class GestionProyectos {
         int index = getIndiceProyecto(reader);
 
         Proyecto proyecto = this.proyectos.get(index);
-        System.out.println("###############" + "\n#   INFORME   #" + "\n###############");
+        System.out.println("""
+                ###############
+                #   INFORME   #
+                ###############""");
         System.out.println("Proyecto: " + proyecto.getNombre() +
                 "\n" + proyecto.getFechaInicio().toString() +
                 " - " + proyecto.getFechaFin().toString() +

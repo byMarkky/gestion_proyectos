@@ -9,10 +9,12 @@ import java.time.LocalDate;
  * @author Marco
  */
 public class Proyecto {
-    private String nombre;
-    private LocalDate fechaInicio;
+    private final String nombre;
+    private final LocalDate fechaInicio;
     private LocalDate fechaFin;
     private String estado;
+
+    private final Equipo equipo;
 
     // private ArrayList<Tarea> listaTareas;
 
