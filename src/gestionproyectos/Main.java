@@ -1,3 +1,5 @@
+package gestionproyectos;
+
 import gestionproyectos.GestionProyectos;
 
 import java.util.Scanner;
